@@ -8,6 +8,8 @@
  */
 
 const User = require('../models/user.model.js');
+const jwt = require('jsonwebtoken');
+const accessTokenSecret = 'some-secret-token';
 
 
 /**
@@ -33,10 +35,19 @@ exports.create = (req, res) => {
         is_email_verified: 0
 
     });
+
+    const accessToken = jwt.sign({
+        user
+    }, accessTokenSecret);
+
     //Save user into db 
     user.save()
-        .then(data => {
-            res.send(data);
+        .then((data, token) => {
+
+            res.send({
+                data: data,
+                token: accessToken
+            });
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Something went wrong, unable to save user"

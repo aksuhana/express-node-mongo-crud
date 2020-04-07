@@ -14,6 +14,7 @@
 
 module.exports = (app) => {
     const users = require('../controllers/user.controller.js');
+    var mw = require('../../jwt-auth');
 
 
     /**
@@ -23,6 +24,8 @@ module.exports = (app) => {
     /**
      * Retrive all users
      */
+    //with jwt
+    app.use(mw);
     app.get('/users', users.getAll);
     /**
      * Find Single User
@@ -37,7 +40,7 @@ module.exports = (app) => {
      */
     app.delete('/users/:id', users.deleteUser);
 
-    //with jwt
+
 
 
 }

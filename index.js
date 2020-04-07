@@ -8,8 +8,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-
-
 /** 
  * Server Root call definition.
  *
