@@ -1,8 +1,10 @@
 /**
+ * 
  * Express Node Framework (4.16.1)
  *
  * @category   Controller
  * @package    express
+ * 
  */
 
 const User = require('../models/user.model.js');

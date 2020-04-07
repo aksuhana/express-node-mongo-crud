@@ -37,4 +37,7 @@ module.exports = (app) => {
      */
     app.delete('/users/:id', users.deleteUser);
 
+    //with jwt
+
+
 }
