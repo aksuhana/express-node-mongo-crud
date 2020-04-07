@@ -24,8 +24,17 @@ module.exports = (app) => {
      * Retrive all users
      */
     app.get('/users', users.getAll);
+    /**
+     * Find Single User
+     */
     app.get('/users/:id', users.findOne);
+    /**
+     * Update Specific User
+     */
     app.put('/users/:id', users.updateUser);
+    /**
+     * Delete Specific User
+     */
     app.delete('/users/:id', users.deleteUser);
 
 }
