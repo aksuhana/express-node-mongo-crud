@@ -15,6 +15,15 @@
 module.exports = (app) => {
     const users = require('../controllers/user.controller.js');
     var mw = require('../../jwt-auth');
+    app.use(function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.setHeader(
+            "Access-Control-Allow-Methods",
+            "GET,HEAD,OPTIONS,POST,PUT,DELETE"
+        );
+        next();
+    });
 
 
     /**
@@ -25,7 +34,7 @@ module.exports = (app) => {
      * Retrive all users
      */
     //with jwt
-    app.use(mw);
+    //app.use(mw);
     app.get('/users', users.getAll);
     /**
      * Find Single User
